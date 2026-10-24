@@ -1,0 +1,128 @@
+Лабораторная работа № 7. 
+Задание 1.
+
+1. Блок-схема алгоритма. Ссылка: в draw.io^ https://drive.google.com/file/d/11_cdZy5hxmCKIdVtUT3QdkNMLGm-xgee/view?usp=sharing
+
+2. Реализация программы.
+#include <stdio.h>
+int main()
+{
+    char c;
+    printf("Введите символы 'a' or 'b': ");
+    scanf("%c", &c);
+    switch (c)
+    {
+        case 'a':
+            printf("Введено 'a'.\n");
+            break;
+        case 'b':
+            printf("Введено 'b'.\n");
+            break;
+        default:
+            printf("Неизвестный символ\n");
+        
+    }
+    return 0;
+}
+
+3. Информация о разработчике: Лепендина Анна группа бИД-261
+
+Задания 2, 3.
+
+#define _CRT_SECURE_NO_DEPRECATE
+#define _USE_MATH_DEFINES 
+#include <locale.h>
+#include <stdio.h>
+#include <math.h>
+int z_1(char c);
+float z_2(float x, char C, float y);
+
+int main() 
+{
+    setlocale(LC_ALL, "RUS"); 
+    
+    char c; 
+    int result_1;
+    puts("Введите символ");
+    scanf("%c", &c);
+    result_1 = z_1(c);
+    switch (c)
+    {
+        case '0': case '1': case '2': case '3': case '4': case '5': case '6': case '7': case '8': case '9':
+            printf("Это цифра\n");
+            break;
+        default:
+            if (result_1) 
+            {
+                printf("Это буква\n");
+            }
+            else 
+            {
+                printf("Неизвестный символ\n");
+            }
+            break;
+    }
+
+    char C;
+    float x, y, result_2;
+    puts("\nВведите выражение (Например, 2.5+1)");
+    scanf("%f%c%f", &x, &C, &y); 
+    result_2 = z_2(x, C, y);
+    switch (C)
+    {
+        case '+': case '-': case '*': case '^':
+            printf("Результат равен: %f\n", result_2);
+            break;
+        case '/':
+            if (y == 0.0f) 
+            {
+                printf("Делить на ноль нельзя!\n");
+            }
+            else 
+            {
+                printf("Результат равен: %f\n", result_2);
+            }
+            break;
+        default:
+            printf("Неизвестный оператор: %c\n", C); 
+            break;
+    }
+    
+    return 0;
+}
+
+int z_1(char c)
+{
+    int res_1;
+    res_1 = (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z');
+    return res_1;
+}
+
+float z_2(float x, char C, float y)
+{
+    float res_2;
+    if (C == '+')
+    {
+        res_2 = x + y;
+    }
+    else if (C == '-')
+    {
+        res_2 = x - y;
+    }
+    else if (C == '*')
+    {
+        res_2 = x * y;
+    }
+    else if (C == '/')
+    {
+        if (y != 0.0f) 
+        {
+            res_2 = x / y;
+        }
+    }
+    else if (C == '^')
+    {
+        res_2 = pow(x, y);
+    }
+    return res_2;
+}

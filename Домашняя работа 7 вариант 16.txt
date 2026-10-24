@@ -1,0 +1,79 @@
+Домашнее задание вариант 16.
+Условие задачи 16. Напишите программу, которая определяет какая цифровая клавиша была нажата. Для ввода используйте getch(), объявленный в conio.h.
+
+1. Алгоритм.
+Начало
+Определить и ввести константы: 
+1) symbol - какая-то цифра от 0 до 9
+Учитывая введённые данные, определить, какая клавиша была нажата.
+Вывести результат.
+Конец
+
+2. Блок-схема алгоритма. Ссылка: в draw.io^ https://drive.google.com/file/d/1vKh-PUEl3WkLvfl3g8dXqNMYAfiFfjGE/view?usp=sharing
+
+3. Реализация программы.
+#define _CRT_SECURE_NO_DEPRECATE
+#define _CRT_SECURE_NO_WARNINGS
+#define _USE_MATH_DEFINES 
+#include <locale.h>
+#include <math.h>
+#include <stdio.h>
+#include <conio.h> 
+int homework(void); 
+
+int main() 
+{
+    setlocale(LC_ALL, "RUS");
+    
+    char result;
+    puts("Нажмите любую цифру на клавиатуре");
+    result = homework(); 
+    switch (result) 
+    {
+        case '0': 
+            printf("Была нажата клавиша '0'\n"); 
+            break;
+        case '1': 
+            printf("Была нажата клавиша '1'\n"); 
+            break;
+        case '2': 
+            printf("Была нажата клавиша '2'\n"); 
+            break;
+        case '3': 
+            printf("Была нажата клавиша '3'\n"); 
+            break;
+        case '4': 
+            printf("Была нажата клавиша '4'\n"); 
+            break;
+        case '5': 
+            printf("Была нажата клавиша '5'\n"); 
+            break;
+        case '6': 
+            printf("Была нажата клавиша '6'\n"); 
+            break;
+        case '7': 
+            printf("Была нажата клавиша '7'\n"); 
+            break;
+        case '8': 
+            printf("Была нажата клавиша '8'\n"); 
+            break;
+        case '9': 
+            printf("Была нажата клавиша '9'\n"); 
+            break;
+        default:
+            printf("Нажатая клавиша '%c' не является цифровой.\n", result);
+            break;
+    }
+    puts("\nНажмите любую клавишу для выхода");
+    _getch();
+    return 0;
+}
+
+int homework(void)
+{
+    char symbol;
+    symbol = _getch();
+    return symbol;
+}
+
+4. Информация о разработчике: Лепендина Анна группа бИД-261

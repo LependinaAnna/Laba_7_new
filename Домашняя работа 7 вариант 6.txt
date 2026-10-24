@@ -1,0 +1,72 @@
+Домашнее задание вариант 6. 
+Условие задачи 6. Дано целое число k, определить каким днём недели является k-й день невисокосного года, в котором 1 января приходиться на заданный заранее день недели.
+
+1. Алгоритм.
+Начало 
+Определить и ввести константы:
+1) k - номер дня в году
+2) first_day - переменная для опеделения того, каким днём недели было 1 января
+3) result_day - переменная для опеделения того, каким днём недели был k-й день года
+Учитывая введённые данные, высчитать result_day.
+Вывести результат.
+Конец
+
+2. Блок-схема алгоритма. Ссылка: в draw.io^ https://drive.google.com/file/d/1ySIfPVkHn4OR-3pQzh97rpzk2bWAoepr/view?usp=sharing
+
+3. Реализация программы.
+#define _CRT_SECURE_NO_DEPRECATE
+#define _USE_MATH_DEFINES 
+#include <locale.h>
+#include <stdio.h>
+#include <math.h>
+int homework(int k, int first_day);
+
+int main() 
+{
+    setlocale(LC_ALL, "RUS");
+
+    int k, first_day, result_day;
+    puts("Введите номер дня в году (от 1 до 365)");
+    scanf("%d", &k);
+    puts("Каким днём недели было 1 января? (1 - Понедельник, 2 - Вторник, 3 - Среда, 4 - Четверг, 5 - Пятница, 6 - Суббота, 7 - Воскресенье)");
+    scanf("%d", &first_day);
+    result_day = homework(k, first_day);
+    printf("%d-й день года — это ", k);
+    switch (result_day) 
+    {
+        case 1: 
+            printf("Понедельник\n"); 
+            break;
+        case 2: 
+            printf("Вторник\n");     
+            break;
+        case 3: 
+            printf("Среда\n");       
+            break;
+        case 4: 
+            printf("Четверг\n");     
+            break;
+        case 5: 
+            printf("Пятница\n");     
+            break;
+        case 6: 
+            printf("Суббота\n");     
+            break;
+        case 7: 
+            printf("Воскресенье\n"); 
+            break;
+        default: 
+            printf("Неизвестный день\n"); 
+            break;
+    }
+    return 0;
+}
+
+int homework(int k, int first_day)
+{
+    int res_day;
+    res_day = (k - 1 + (first_day - 1)) % 7 + 1;
+    return res_day;
+}
+
+4. Информация о разработчике: Лепендина Анна группа бИД-261 
